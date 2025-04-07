@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love</title>
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+  <main>
+    <h1><img src="Heart_corazón.svg.webp" alt="heart">THE REAL QUESTION IS<img src="Heart_corazón.svg.webp" alt="heart"></h1>
+  </main>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ee77e4;
+      background-color: #574d55;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    .heart-button {
+      width: 100px;
+      height: 90px;
+    margin-top: 30px;
+      background-color: red;
+      transform: rotate(-45deg);
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .heart-button::before,
+    .heart-button::after {
+      content: "";
+      width: 100px;
+      height: 90px;
+      background-color: red;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .heart-button::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart-button::after {
+      left: 50px;
+      top: 0;
+    }
+
+    .heart-button.pop {
+      animation: pop 3.5s ease;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1) rotate(-45deg);
+      }
+      50% {
+        transform: scale(1.5) rotate(-45deg);
+      }
+      100% {
+        transform: scale(0) rotate(-45deg);
+      }
+    }
+
+    .question {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttons {
+      display: none;
+      flex-direction: row;
+      gap: 20px;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .buttons button.yes {
+      background-color: green;
+      color: white;
+    }
+
+    .buttons button.watch.this.befor.answring{
+      background-color: rgb(134, 134, 134);
+      color: white;
+    }
+    .buttons button.no {
+      background-color: rgb(250, 0, 0);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button class="heart-button" id="heart-button"></button>
+  <div class="question" id="question">
+    <h2>Do you really want to spend the rest of your life with me?</h2>
+    <h2>are you down to change dor us?</h2>
+    <div class="buttons">
+      <a href="https://youtu.be/DY--oFRrQ2M"><button class="yes" onclick="swm()">Yes</button></a>
+     <a href="https://youtu.be/ZjtD8dGi9ZY"><button class="no" onclick="fy()">No</button></a> 
+      <a href="https://www.youtube.com/watch?v=fTmTUn7RukU"><button class="watch this befor answring">watch this befor answring</button></a>
+      <a href="https://www.youtube.com/results?search_query=inspiration+future"><button class="yes" onclick="swm()">Yes</button></a>
+     <a href="https://www.youtube.com/watch?v=LY8H6vccN5M"><button class="no" onclick="fy()">No</button></a> 
+    </div>
+  </div>
+  <script>
+    const heartButton = document.getElementById('heart-button');
+    const question = document.getElementById('question');
+    const buttons = document.querySelector('.buttons');
+
+    let clicksNeeded = 5; // Clicks needed for the heart to pop
+    let clicksNeeded = 2; // Clicks needed for the heart to pop
+    let clicksCount = 0;
+
+    heartButton.addEventListener('click', () => {
+      clicksCount++;
+      if (clicksCount >= clicksNeeded) {
+        heartButton.classList.add('pop');
+        setTimeout(() => {
+          question.style.display = "block";
+          buttons.style.display = "flex";
+        }, 500); // Show question and buttons after the heart pops
+      }
+    })
+    ;
+  </script>
+</body>
+</html>
