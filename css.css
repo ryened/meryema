@@ -1,0 +1,12 @@
+h1{text-align: center;
+    animation-name: titre;
+    animation-direction:reverse ;
+    animation-iteration-count: infinite;}
+body{background-color: rgb(232, 149, 235);}
+fieldset{text-align: center;}
+.l1{
+    display: inline-block;width: 430px;margin-bottom: 10px
+    ;           
+}
+#text{border-radius: 5%;border-color: violet;border-width: 5px;}
+img{width:10px;}
