@@ -16,7 +16,6 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #ee77e4;
       background-color: #574d55;
       flex-direction: column;
       font-family: Arial, sans-serif;
@@ -104,7 +103,6 @@
       background-color: green;
       color: white;
     }
-
     .buttons button.watch.this.befor.answring{
       background-color: rgb(134, 134, 134);
       color: white;
@@ -118,11 +116,8 @@
 <body>
   <button class="heart-button" id="heart-button"></button>
   <div class="question" id="question">
-    <h2>Do you really want to spend the rest of your life with me?</h2>
     <h2>are you down to change dor us?</h2>
     <div class="buttons">
-      <a href="https://youtu.be/DY--oFRrQ2M"><button class="yes" onclick="swm()">Yes</button></a>
-     <a href="https://youtu.be/ZjtD8dGi9ZY"><button class="no" onclick="fy()">No</button></a> 
       <a href="https://www.youtube.com/watch?v=fTmTUn7RukU"><button class="watch this befor answring">watch this befor answring</button></a>
       <a href="https://www.youtube.com/results?search_query=inspiration+future"><button class="yes" onclick="swm()">Yes</button></a>
      <a href="https://www.youtube.com/watch?v=LY8H6vccN5M"><button class="no" onclick="fy()">No</button></a> 
@@ -133,7 +128,6 @@
     const question = document.getElementById('question');
     const buttons = document.querySelector('.buttons');
 
-    let clicksNeeded = 5; // Clicks needed for the heart to pop
     let clicksNeeded = 2; // Clicks needed for the heart to pop
     let clicksCount = 0;
 
