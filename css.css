@@ -4,7 +4,7 @@ h1{text-align: center;
     animation-iteration-count: infinite;}
 body{background-color: rgb(41, 36, 41);}
 fieldset{text-align: center;}
-.p{background-color: lightpink;text-decoration:none;margin: 50px;border-radius: 10px;padding: 12px;color:palevioletred; margin-top: 50px;
+.p{background-color: lightpink;text-decoration:none;margin: 20px;border-radius: 10px;padding: 12px;color:palevioletred; margin-top: 50px;
 }
 .l1{
     display: inline-block;width: 430px;margin-bottom: 10px;           
