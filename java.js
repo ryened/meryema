@@ -29,12 +29,15 @@ function askPasswordOnce() {
     }
 }
 
-// Safe handler for setting the iframe src without letting a form submit/reload the page.
+// Safe handler for setting the local video src without letting a form submit/reload the page.
 function yo(event) {
     if (event && event.preventDefault) event.preventDefault();
-    const iframe = document.querySelector('iframe');
-    if (iframe) {
-        iframe.src = 'https://youtu.be/otwkkWS8pxg?si=4vhqC7n8YSfX0w_i';
+    const video = document.getElementById('localVideo') || document.querySelector('video');
+    if (video) {
+        // Local file path provided by user (file URI). If you move the file into the project,
+        // replace this with a relative path like 'videos/myvideo.mp4'.
+        video.src = 'file:///C:/Users/syray/Downloads/Njibou%20L%20Bac%20We%20Ndiro%20Day%20Day.mp4';
+        try { video.load(); video.play(); } catch (e) {}
     }
     return false;
 }
@@ -42,7 +45,7 @@ function yo(event) {
 // Generic submit handler to attach to forms/buttons that should not reload the page.
 function handleSubmit(e) {
     if (e && e.preventDefault) e.preventDefault();
-    return yo();
+    return yoDebug(e);
 }
 
 // If you want the prompt to run on load, use this (it will only run once per session):
@@ -56,21 +59,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach click handler to the button (if you changed to type="button")
     const btn = document.querySelector('input[type="button"]');
     if (btn) {
-        btn.addEventListener('click', function (e) { yo(e); });
+        btn.addEventListener('click', function (e) { yoDebug(e); });
     }
 });
 
-// Debugging: log when yo() runs and when iframe is set
-const _origYo = yo;
-function yo(event) {
+// Debugging: log when yo() runs and when video is set
+function yoDebug(event) {
     if (event && event.preventDefault) event.preventDefault();
-    console.log('yo() called, preventing default and setting iframe src');
-    const iframe = document.querySelector('iframe');
-    if (iframe) {
-        iframe.src = 'https://youtu.be/otwkkWS8pxg?si=4vhqC7n8YSfX0w_i';
-        console.log('iframe src set to', iframe.src);
+    console.log('yo() called, preventing default and setting video src');
+    const video = document.getElementById('localVideo') || document.querySelector('video');
+    if (video) {
+        video.src = 'file:///C:/Users/syray/Downloads/Njibou%20L%20Bac%20We%20Ndiro%20Day%20Day.mp4';
+        console.log('video src set to', video.src);
+        try { video.load(); video.play(); } catch (e) {}
     } else {
-        console.warn('No iframe found on page');
+        console.warn('No video element found on page');
     }
     return false;
 }
+
+// Replace the main handler with debug handler for extra logging
+// (the click listener calls `yo`, so update it to call `yoDebug` below)
