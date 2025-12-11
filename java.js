@@ -34,7 +34,7 @@ function yo(event) {
     if (event && event.preventDefault) event.preventDefault();
     const iframe = document.querySelector('iframe');
     if (iframe) {
-        iframe.src = 'https://www.youtube.com/embed/otwkkWS8pxg';
+        iframe.src = 'https://youtu.be/otwkkWS8pxg?si=4vhqC7n8YSfX0w_i';
     }
     return false;
 }
@@ -48,4 +48,29 @@ function handleSubmit(e) {
 // If you want the prompt to run on load, use this (it will only run once per session):
 document.addEventListener('DOMContentLoaded', function () {
     askPasswordOnce();
+    // Attach form submit handler from JS so the event object is passed reliably
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', handleSubmit);
+    }
+    // Attach click handler to the button (if you changed to type="button")
+    const btn = document.querySelector('input[type="button"]');
+    if (btn) {
+        btn.addEventListener('click', function (e) { yo(e); });
+    }
 });
+
+// Debugging: log when yo() runs and when iframe is set
+const _origYo = yo;
+function yo(event) {
+    if (event && event.preventDefault) event.preventDefault();
+    console.log('yo() called, preventing default and setting iframe src');
+    const iframe = document.querySelector('iframe');
+    if (iframe) {
+        iframe.src = 'https://youtu.be/otwkkWS8pxg?si=4vhqC7n8YSfX0w_i';
+        console.log('iframe src set to', iframe.src);
+    } else {
+        console.warn('No iframe found on page');
+    }
+    return false;
+}
